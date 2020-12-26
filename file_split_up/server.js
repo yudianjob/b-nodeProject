@@ -17,7 +17,9 @@ app.post('/upload', function(req, res) {
     console.log('come in ')
     const form = new multiparty.Form({ uploadDir: "temp" })
     form.parse(req);
+    console.log(req)
     form.on('file', async(name, chunk) => {
+            console.log('file-name:', name, 'file-chunk:', chunk)
             console.log('chunk.org..Name', chunk.originalFilename);
             //存放切片的目录
             let chunkDir = `${UPLOAD_DIR}/${chunk.originalFilename.split('.')[0]}`;
@@ -34,7 +36,10 @@ app.post('/upload', function(req, res) {
         // res.send('服务端说：the all 上传文件成功')
 
 });
-
+app.get('/test', function(req, res) {
+    console.log(req.query)
+    res.send('ok');
+})
 app.post('/merge', async(req, res) => {
     console.log('merge:ing')
     let name = req.body.name;
