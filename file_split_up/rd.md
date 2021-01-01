@@ -2,3 +2,4 @@
 npx babel public/index.js -o indexout.js 
 
 2，想要去掉require
+3,ceshi
